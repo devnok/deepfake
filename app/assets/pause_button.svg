@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__pause" width="194" height="194" viewBox="0 0 194 194">
+    <defs>
+        <style>
+            .prefix__cls-2{fill:#fff}.prefix__cls-3{fill:none;stroke:#fff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:10px}
+        </style>
+    </defs>
+    <g id="prefix__그룹_151" data-name="그룹 151" transform="translate(-.063 .083)">
+        <rect id="prefix__사각형_68" width="194" height="194" fill="#0091ff" data-name="사각형 68" rx="55.678" transform="translate(.063 -.083)"/>
+    </g>
+    <g id="prefix__그룹_157" data-name="그룹 157" transform="translate(37.855 38.001)">
+        <g id="prefix__그룹_156" data-name="그룹 156">
+            <g id="prefix__그룹_152" data-name="그룹 152">
+                <path id="prefix__패스_151" d="M-451.739 1365.716v-19.662a18.314 18.314 0 0 1 18.293-18.293h18.535v-5.261h-18.535A23.581 23.581 0 0 0-457 1346.054v19.662z" class="prefix__cls-2" data-name="패스 151" transform="translate(457 -1322.5)"/>
+            </g>
+            <g id="prefix__그룹_153" data-name="그룹 153" transform="translate(75.91 77.037)">
+                <path id="prefix__패스_152" d="M-294.083 1450.462v17.407a18.314 18.314 0 0 1-18.293 18.293h-18.535v5.261h18.535a23.581 23.581 0 0 0 23.554-23.554v-17.407z" class="prefix__cls-2" data-name="패스 152" transform="translate(330.911 -1450.462)"/>
+            </g>
+            <g id="prefix__그룹_154" data-name="그룹 154" transform="translate(75.91)">
+                <path id="prefix__패스_153" d="M-330.911 1327.761h18.535a18.314 18.314 0 0 1 18.293 18.293v19.662h5.261v-19.662a23.581 23.581 0 0 0-23.554-23.554h-18.535z" class="prefix__cls-2" data-name="패스 153" transform="translate(330.911 -1322.5)"/>
+            </g>
+            <g id="prefix__그룹_155" data-name="그룹 155" transform="translate(0 77.037)">
+                <path id="prefix__패스_154" d="M-414.911 1486.162h-18.535a18.314 18.314 0 0 1-18.293-18.293v-17.407H-457v17.407a23.581 23.581 0 0 0 23.554 23.554h18.535z" class="prefix__cls-2" data-name="패스 154" transform="translate(457 -1450.462)"/>
+            </g>
+        </g>
+    </g>
+    <g id="prefix__그룹_158" data-name="그룹 158" transform="translate(82.405 74.424)">
+        <path id="prefix__선_2" d="M0 0L0 45.153" class="prefix__cls-3" data-name="선 2" transform="translate(28.898)"/>
+        <path id="prefix__선_3" d="M0 0L0 45.153" class="prefix__cls-3" data-name="선 3"/>
+    </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__main_icon" width="194" height="194" viewBox="0 0 194 194">
+    <defs>
+        <style>
+            .prefix__cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="prefix__그룹_143" data-name="그룹 143">
+        <rect id="prefix__사각형_67" width="194" height="194" fill="#0091ff" data-name="사각형 67" rx="55.678"/>
+    </g>
+    <g id="prefix__그룹_149" data-name="그룹 149" transform="translate(38.011 38.011)">
+        <g id="prefix__그룹_148" data-name="그룹 148">
+            <g id="prefix__그룹_144" data-name="그룹 144">
+                <path id="prefix__패스_146" d="M-434.74 1825.64v-19.659a18.31 18.31 0 0 1 18.289-18.29h18.532v-5.26h-18.532a23.576 23.576 0 0 0-23.549 23.55v19.659z" class="prefix__cls-2" data-name="패스 146" transform="translate(440 -1782.432)"/>
+            </g>
+            <g id="prefix__그룹_145" data-name="그룹 145" transform="translate(75.897 77.023)">
+                <path id="prefix__패스_147" d="M-277.09 1910.393v17.4a18.311 18.311 0 0 1-18.29 18.29h-18.532v5.26h18.532a23.577 23.577 0 0 0 23.55-23.55v-17.4z" class="prefix__cls-2" data-name="패스 147" transform="translate(313.911 -1910.393)"/>
+            </g>
+            <g id="prefix__그룹_146" data-name="그룹 146" transform="translate(75.897)">
+                <path id="prefix__패스_148" d="M-313.911 1787.692h18.532a18.31 18.31 0 0 1 18.29 18.29v19.659h5.26v-19.659a23.576 23.576 0 0 0-23.55-23.55h-18.532z" class="prefix__cls-2" data-name="패스 148" transform="translate(313.911 -1782.432)"/>
+            </g>
+            <g id="prefix__그룹_147" data-name="그룹 147" transform="translate(0 77.023)">
+                <path id="prefix__패스_149" d="M-397.919 1946.087h-18.532a18.31 18.31 0 0 1-18.289-18.29v-17.4H-440v17.4a23.577 23.577 0 0 0 23.549 23.55h18.532z" class="prefix__cls-2" data-name="패스 149" transform="translate(440 -1910.393)"/>
+            </g>
+        </g>
+    </g>
+    <path id="prefix__패스_150" fill="#fff" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14px" d="M-360.375 1886.994l28.516-19.378-28.516-19.378z" data-name="패스 150" transform="translate(446.315 -1770.616)"/>
+</svg>

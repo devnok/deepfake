@@ -1,0 +1,6 @@
+module Pods_Deepfake_DeepfakeTests {
+  umbrella header "Pods-Deepfake-DeepfakeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

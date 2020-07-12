@@ -1,0 +1,2 @@
+CFBundleDisplayName = "Fake Hunter";
+NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
