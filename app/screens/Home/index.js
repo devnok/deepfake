@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components/native';
@@ -10,6 +10,9 @@ import PhotoInput from 'app/components/Forms/PhotoInput';
 import Button from 'app/components/Forms/Button';
 import PlayButton from 'app/assets/play_button.svg';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Video from 'react-native-video';
+import { StyleSheet } from 'react-native';
+import metrics from '../../config/metrics';
 
 const Container = styled.View`
   display: flex;
@@ -39,13 +42,25 @@ const ButtonContainer = styled.TouchableOpacity`
   position: absolute;
   bottom: 20px;
 `;
+const Preview = styled.View`
+  min-height: 200px;
+`;
+const videoStyle = {
+  width: metrics.screenWidth - 40,
+  height: 200,
+};
 
 export default function Home({ navigation }) {
   const dispatch = useDispatch();
-
+  const [url, setUrl] = useState('');
+  const [videoSource, setViedoSource] = useState('');
   const handlePress = () => {
     navigation.navigate('CheckLoading');
   };
+  const findSource = url => {
+    setViedoSource(url);
+  };
+  console.log(videoSource);
   return (
     <Container>
       <Content enableOnAndroid>
@@ -56,14 +71,37 @@ export default function Home({ navigation }) {
         </Description>
         <Group>
           <Label text={'앨범에서 추가'} />
-          <PhotoInput placeholder={'눌러서 파일을 추가해 주세요.'} />
+          <PhotoInput
+            videoSource={videoSource}
+            setViedoSource={setViedoSource}
+            placeholder={'눌러서 파일을 추가해 주세요.'}
+          />
         </Group>
         <Group>
           <Label text={'URL 입력'} />
-          <Input placeholder={'영상 or 이미지 URL을 입력해 주세요.'} />
+          <Input
+            onChangeText={setUrl}
+            value={url}
+            placeholder={'영상 or 이미지 URL을 입력해 주세요.'}
+          />
         </Group>
-        <Group center space>
-          <Button text={'찾기'} />
+        <Group center>
+          <Button text={'찾기'} onPress={findSource} />
+        </Group>
+        <Group space>
+          <Label text={'미리 보기'} />
+          <Preview>
+            {videoSource !== '' && (
+              <Video
+                source={{
+                  uri: videoSource,
+                }}
+                resizeMode="cover"
+                paused={false}
+                style={videoStyle}
+              />
+            )}
+          </Preview>
         </Group>
       </Content>
       <Footer>

@@ -16,9 +16,9 @@ const TextInput = styled.TextInput`
   border-radius: 18px;
 `;
 
-const Input = ({ value, placeholder }) => (
+const Input = props => (
   <Container>
-    <TextInput value={value} placeholder={placeholder} />
+    <TextInput {...props} />
   </Container>
 );
 

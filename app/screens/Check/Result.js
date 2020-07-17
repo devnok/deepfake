@@ -55,7 +55,7 @@ const InfoView = styled.View`
   elevation: 4;
   background-color: ${AppStyles.color.COLOR_WHITE};
   border-radius: 10px;
-  padding: 24px 11px 12px;
+  padding: 24px 8px 12px;
   margin: 0 9.3px;
   display: flex;
   justify-content: center;
@@ -79,13 +79,14 @@ const InfoTitle = styled.Text`
 const InfoData = styled.Text`
   margin-top: 12px;
   font-size: 12px;
+  text-align: center;
   font-family: ${AppStyles.fonts.FONT_EB};
   color: ${AppStyles.color.COLOR_SECONDARY};
 `;
 const Discover = styled.Text`
   font-family: ${AppStyles.fonts.FONT_BOLD};
   color: #95a0aa;
-  font-size: 12px;
+  font-size: 11.5px;
   line-height: 18px;
   margin-left: 3px;
 `;
@@ -127,8 +128,7 @@ const MetaData = styled.Text`
   font-size: 10px;
   flex-shrink: 1;
 `;
-const Image = styled(AutoHeightImage)`
-`;
+const Image = styled(AutoHeightImage)``;
 const style = {
   paddingTop: 18,
   paddingBottom: 18,
