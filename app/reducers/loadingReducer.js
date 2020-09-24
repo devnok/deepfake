@@ -1,19 +1,15 @@
-/**
- * Loading reducer made seperate for easy blacklisting
- * Avoid data persist
- */
+import { FINISH_LOADING, START_LOADING } from 'app/actions/types';
 import createReducer from 'app/lib/createReducer';
-import * as types from 'app/actions/types';
 
-const initialState = {
-  isLoginLoading: false,
-};
+const initialState = {};
 
-export const loadingReducer = createReducer(initialState, {
-  [types.LOGIN_ENABLE_LOADER](state) {
-    return { ...state, isLoginLoading: true };
-  },
-  [types.LOGIN_DISABLE_LOADER](state) {
-    return { ...state, isLoginLoading: false };
-  },
+export const LoadingReducer = createReducer(initialState, {
+  [START_LOADING]: (state, action) => ({
+    ...state,
+    [action.payload]: true,
+  }),
+  [FINISH_LOADING]: (state, action) => ({
+    ...state,
+    [action.payload]: false,
+  }),
 });

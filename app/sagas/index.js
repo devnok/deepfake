@@ -1,10 +1,18 @@
 /**
  *  Redux saga class init
  */
-import { takeEvery, all } from 'redux-saga/effects';
+import { takeEvery, all, takeLatest } from 'redux-saga/effects';
 import * as types from '../actions/types';
-import loginSaga from './loginSaga';
+import {
+  doneVideoSaga,
+  fetchDetectsSaga,
+  uploadVideoSaga,
+} from './DeepfakeSaga';
 
 export default function* watch() {
-  yield all([takeEvery(types.LOGIN_REQUEST, loginSaga)]);
+  yield all([
+    takeLatest(types.deepfakeTypes.UPLOAD_VIDEO.INDEX, uploadVideoSaga),
+    takeLatest(types.deepfakeTypes.UPLOAD_VIDEO.SUCCESS, doneVideoSaga),
+    takeLatest(types.deepfakeTypes.SET_VIDEO_DONE, fetchDetectsSaga),
+  ]);
 }

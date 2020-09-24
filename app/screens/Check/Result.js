@@ -11,6 +11,8 @@ import Search from 'app/assets/search.svg';
 import AutoHeightImage from 'react-native-auto-height-image';
 
 import ShieldIcon from 'app/assets/shield_icon.svg';
+import { useSelector } from 'react-redux';
+import { byte2mb, convertDetectToThumbnail, secondsFormat } from 'app/utils/stringUtils';
 
 const Container = styled.View`
   display: flex;
@@ -41,7 +43,7 @@ const Title = styled.Text`
   font-size: 18px;
   font-family: ${AppStyles.fonts.FONT_EB};
   color: ${AppStyles.color.COLOR_TEXT_BLACK};
-`
+`;
 const InfoListView = styled.View`
   display: flex;
   flex-direction: row;
@@ -154,8 +156,7 @@ const PartText = styled.Text`
   font-family: ${AppStyles.fonts.FONT_BOLD};
   color: ${AppStyles.color.COLOR_WHITE};
 `;
-const PartDesc = styled.View`
-`;
+const PartDesc = styled.View``;
 const Row = styled.View`
   flex-direction: row;
   display: flex;
@@ -178,31 +179,17 @@ const Percentage = styled.Text`
   margin-left: 4.5px;
 `;
 
-const data = [
-  {
-    start: 0.0,
-    end: 0.3,
-    img_url:
-      'https://cdn.zeplin.io/5f06d0806fcd6379955d7809/assets/86083A32-C9DB-4CFA-98E1-00AA837BFAD6.png',
-    fake_p: 0.998,
-  },
-  {
-    start: 0.4,
-    end: 0.5,
-    img_url:
-      'https://cdn.zeplin.io/5f06d0806fcd6379955d7809/assets/86083A32-C9DB-4CFA-98E1-00AA837BFAD6.png',
-    fake_p: 0.998,
-  },
-  {
-    start: 0.8,
-    end: 1.0,
-    img_url:
-      'https://cdn.zeplin.io/5f06d0806fcd6379955d7809/assets/86083A32-C9DB-4CFA-98E1-00AA837BFAD6.png',
-    fake_p: 0.998,
-  },
-];
-
 const Result = () => {
+  const detects = useSelector(state => state.deepfakeReducer.detects);
+  const video = useSelector(state => state.deepfakeReducer.video);
+  const detectAt = useSelector(state => state.deepfakeReducer.detectAt);
+
+  console.log(detects, video);
+  if (!video) {
+    return null;
+  }
+  console.log('detectAt', detectAt);
+
   return (
     <Container>
       <Content>
@@ -225,14 +212,16 @@ const Result = () => {
                 <InfoTitle>분석 시간</InfoTitle>
               </InfoTitleView>
               <Clock width={36} height={36} />
-              <InfoData>{'3분 50초'}</InfoData>
+              <InfoData>
+                {((detectAt.endAt - detectAt.startAt) / 1000).toFixed(0)}초
+              </InfoData>
             </InfoView>
             <InfoView>
               <InfoTitleView>
                 <InfoTitle>분석 구간</InfoTitle>
               </InfoTitleView>
               <Search width={36} height={36} />
-              <InfoData>{562}개</InfoData>
+              <InfoData>{detects.length * 2 + 1}개</InfoData>
             </InfoView>
           </InfoListView>
         </Group>
@@ -241,30 +230,40 @@ const Result = () => {
           <InfoBox>
             <ResultView>
               <ShieldIcon width={16} height={16} />
-              <Strong>{data.length}</Strong>
+              <Strong>{detects.length}</Strong>
               <Discover>
                 개의 구간에서 페이크 의심 화면이 발견되었습니다.
               </Discover>
             </ResultView>
-            <PartsBar data={data} />
-            <Length>{'02:35:00'}</Length>
+            <PartsBar
+              data={detects.map(d => ({
+                start: d.startSec / video.duration,
+                end: d.endSec / video.duration,
+              }))}
+            />
+            <Length>{secondsFormat(video.duration)}</Length>
           </InfoBox>
         </Group>
         <Group center>
           <Label text={'대표 발견 구간'} />
-          {data.map((d, i) => (
+          {detects.map((d, i) => (
             <InfoBox style={style} key={i}>
-              <Image width={100} source={{ uri: d.img_url }} />
+              <Image
+                width={100}
+                source={{
+                  uri: convertDetectToThumbnail(d),
+                }}
+              />
               <PartBox>
                 <PartText>구간{i + 1}</PartText>
               </PartBox>
               <PartDesc>
                 <Section>
-                  {'0:01:08'} ~ {'0:12:38'}
+                  {secondsFormat(d.startSec)} ~ {secondsFormat(d.endSec)}
                 </Section>
                 <Row>
                   <Per>페이크일 확률</Per>
-                  <Percentage>{d.fake_p * 100}%</Percentage>
+                  <Percentage>{d.avgFakeProbability * 100}%</Percentage>
                 </Row>
               </PartDesc>
             </InfoBox>
@@ -275,24 +274,20 @@ const Result = () => {
           <InfoBox>
             <MetaView>
               <MetaName>타이틀</MetaName>
-              <MetaData>
-                {
-                  'Former President Obama unleashes on Trump, GOP - Full speech from Illinois'
-                }
-              </MetaData>
+              <MetaData>{video?.fileName}</MetaData>
             </MetaView>
             <MetaView>
               <MetaName>영상 크기</MetaName>
-              <MetaData>{23.5}MB</MetaData>
+              <MetaData>{byte2mb(video?.fileSize)}MB</MetaData>
             </MetaView>
             <MetaView style={{ marginBottom: 0 }}>
               <MetaName>영상 길이</MetaName>
-              <MetaData>{'02:35:00'}</MetaData>
+              <MetaData>{secondsFormat(video?.duration)}</MetaData>
             </MetaView>
           </InfoBox>
         </Group>
       </Content>
-    </Container >
+    </Container>
   );
 };
 

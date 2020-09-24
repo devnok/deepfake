@@ -1,11 +1,9 @@
 // export action creators
-import * as loginActions from './loginActions';
-import * as navigationActions from './navigationActions';
-import * as themeActions from './themeActions';
+import * as DeepfakeActions from './DeepfakeActions';
+import * as LoadingActions from './LoadingActions';
 
 export const ActionCreators = Object.assign(
   {},
-  loginActions,
-  navigationActions,
-  themeActions,
+  DeepfakeActions,
+  LoadingActions,
 );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/native';
 import AppStyles from '../config/styles';
 
@@ -16,9 +16,8 @@ const Bar = styled.View`
 `;
 const DoneBar = styled.View`
   position: absolute;
-  left: 0;
-  margin-left: ${props => props.start * 100}%;
-  width: ${props => (props.end - props.start) * 100}%;
+  left: ${props => props.start}px;
+  width: ${props => props.width}px;
   height: 27px;
   border-bottom-left-radius: 13.5px;
   border-top-right-radius: 13.5px;
@@ -41,6 +40,7 @@ const Circle = styled.View`
   justify-content: center;
   align-items: center;
   transform: translate(-12px, -12px);
+  elevation: 6;
 `;
 const Num = styled.Text`
   font-family: ${AppStyles.fonts.FONT_EB};
@@ -48,24 +48,30 @@ const Num = styled.Text`
   color: ${AppStyles.color.COLOR_WHITE};
 `;
 const Data = styled.Text`
+  position: absolute;
+  bottom: -15px;
   font-family: ${AppStyles.fonts.FONT_EB};
+  margin-left: ${props => props.start}px;
   font-size: 10px;
-  color: ${AppStyles.color.COLOR_WHITE};
+  color: ${AppStyles.color.COLOR_SECONDARY};
 `;
 
-const PartsBar = ({ data = [] }) => (
-  <Container>
-    <Bar>
-      {data.map(({ start, end }, i) => (
-        <DoneBar key={i} start={start} end={end}>
-          <Circle>
-            <Num>#{i + 1}</Num>
-          </Circle>
-          <Data>구간 {i + 1}</Data>
-        </DoneBar>
-      ))}
-    </Bar>
-  </Container>
-);
+const PartsBar = ({ data = [] }) => {
+  console.log('data: ', data);
+  const [width, setWidth] = useState(0);
+  return (
+    <Container onLayout={e => setWidth(e.nativeEvent.layout.width)}>
+      <Bar>
+        {data.map(({ start, end }, i) => (
+          <DoneBar key={i} start={start * width} width={(end - start) * width}>
+            <Circle>
+              <Num>#{i + 1}</Num>
+            </Circle>
+          </DoneBar>
+        ))}
+      </Bar>
+    </Container>
+  );
+};
 
 export default PartsBar;

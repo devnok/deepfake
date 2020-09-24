@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import AppStyles from 'app/config/styles';
 import Label from 'app/components/Forms/Label';
@@ -13,6 +13,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import Video from 'react-native-video';
 import { StyleSheet } from 'react-native';
 import metrics from '../../config/metrics';
+import Spinner from 'react-native-loading-spinner-overlay';
+import * as DeepfakeActions from 'app/actions/DeepfakeActions';
 
 const Container = styled.View`
   display: flex;
@@ -41,6 +43,7 @@ const Footer = styled.View`
 const ButtonContainer = styled.TouchableOpacity`
   position: absolute;
   bottom: 20px;
+  align-self: center;
 `;
 const Preview = styled.View`
   min-height: 200px;
@@ -49,20 +52,46 @@ const videoStyle = {
   width: metrics.screenWidth - 40,
   height: 200,
 };
+const loadingTextStyle = {
+  fontFamily: AppStyles.fonts.FONT_BOLD,
+  color: AppStyles.color.COLOR_WHITE,
+  fontSize: 13.3,
+};
 
 export default function Home({ navigation }) {
   const dispatch = useDispatch();
   const [url, setUrl] = useState('');
-  const [videoSource, setViedoSource] = useState('');
+  const video = useSelector(state => state.deepfakeReducer.video);
+  const loading = useSelector(state => state.LoadingReducer);
+
   const handlePress = () => {
-    navigation.navigate('CheckLoading');
+    if (!video || !video.type) return;
+    const types = video.type.split('/');
+    const codec = types[types.length - 1] || 'mp4';
+    dispatch(
+      DeepfakeActions.uploadVideo(
+        {
+          file: {
+            name: `${Date.now()}.${codec}`,
+            type: video.type,
+            uri: video.uri,
+          },
+          startAt: Date.now(),
+        },
+        () => navigation.navigate('CheckLoading'),
+      ),
+    );
   };
-  const findSource = url => {
-    setViedoSource(url);
+  const findSource = () => {
+    console.log(url);
   };
-  console.log(videoSource);
   return (
     <Container>
+      <Spinner
+        visible={!!loading[DeepfakeActions.uploadVideo().type]}
+        textContent={'로딩중...'}
+        textStyle={loadingTextStyle}
+      />
       <Content enableOnAndroid>
         <Description>
           {
@@ -72,8 +101,10 @@ export default function Home({ navigation }) {
         <Group>
           <Label text={'앨범에서 추가'} />
           <PhotoInput
-            videoSource={videoSource}
-            setViedoSource={setViedoSource}
+            setVideo={_video => {
+              const { data, ...videoWithoutData } = _video;
+              dispatch(DeepfakeActions.setVideo(videoWithoutData))
+            }}
             placeholder={'눌러서 파일을 추가해 주세요.'}
           />
         </Group>
@@ -91,24 +122,33 @@ export default function Home({ navigation }) {
         <Group space>
           <Label text={'미리 보기'} />
           <Preview>
-            {videoSource !== '' && (
+            {video && video.uri && (
               <Video
+                repeat
                 source={{
-                  uri: videoSource,
+                  uri: video.uri,
                 }}
                 resizeMode="cover"
-                paused={false}
                 style={videoStyle}
+                onLoad={({ duration, naturalSize }) =>
+                  dispatch(
+                    DeepfakeActions.setVideo({
+                      ...video,
+                      duration,
+                      naturalSize,
+                    }),
+                  )
+                }
+                onLoadStart={props => console.log(props)}
               />
             )}
           </Preview>
         </Group>
       </Content>
-      <Footer>
-        <ButtonContainer onPress={handlePress}>
-          <PlayButton width={64} height={64} />
-        </ButtonContainer>
-      </Footer>
+      <Footer />
+      <ButtonContainer onPress={handlePress}>
+        <PlayButton width={64} height={64} />
+      </ButtonContainer>
     </Container>
   );
 }

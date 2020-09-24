@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useSelector } from 'react-redux';
 
 import { navigationRef } from './NavigationService';
 
-import Login from 'app/screens/Login';
 import Home from 'app/screens/Home';
 import CheckLoading from 'app/screens/Check/Loading.js';
 import CheckResult from 'app/screens/Check/Result.js';
@@ -40,6 +38,7 @@ function App(props) {
       <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
 
       <Stack.Navigator
+        headerMode="float"
         screenOptions={{
           headerStyle: {
             backgroundColor: AppStyles.color.COLOR_BLUE_WHITE,

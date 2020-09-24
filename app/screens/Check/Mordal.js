@@ -4,6 +4,9 @@ import AppStyles from '../../config/styles';
 import { Portal } from 'react-native-paper';
 import SHILED_FAILED from 'app/assets/shield_x.svg';
 import Button from '../../components/Forms/Button';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setVideo } from 'app/actions/DeepfakeActions';
 
 const Overlay = styled.View`
   background-color: ${AppStyles.color.COLOR_TEXT_BLACK + 'CC'};
@@ -40,6 +43,21 @@ const Description = styled.Text`
 `;
 
 const Mordal = ({ isFake = false }) => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
+  const navToHome = () => {
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Home' }],
+    });
+    dispatch(setVideo(null));
+  };
+  const navToResult = () => {
+    navigation.reset({
+      index: 1,
+      routes: [{name: 'Home'}, {name: 'CheckResult'}],
+    });
+  };
   const bgColor = isFake
     ? AppStyles.color.COLOR_RED
     : AppStyles.color.COLOR_PRIMARY;
@@ -59,6 +77,7 @@ const Mordal = ({ isFake = false }) => {
               : 'Not Found'}
           </Description>
           <Button
+            onPress={isFake ? navToResult : navToHome}
             text={isFake ? '결과 보러가기' : '되돌아가기'}
             color={bgColor}
             bgColor={AppStyles.color.COLOR_WHITE}

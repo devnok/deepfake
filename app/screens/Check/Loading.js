@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/native';
 import AppStyles from 'app/config/styles';
 import PauseButton from 'app/assets/pause_button.svg';
@@ -13,8 +13,11 @@ import ProgressBar from '../../components/ProgressBar';
 import InfoBox from '../../components/Forms/InfoBox';
 import Mordal from './Mordal';
 import { ColorDotsLoader } from 'react-native-indicator';
+import { byte2mb, convertDetectToThumbnail, secondsFormat } from 'app/utils/stringUtils';
 
 import ShieldIcon from 'app/assets/shield_icon.svg';
+import { stopIsVideoDone } from 'app/actions/DeepfakeActions';
+import { useIsFocused } from '@react-navigation/native';
 
 const Container = styled.View`
   display: flex;
@@ -42,6 +45,7 @@ const Footer = styled.View`
 const ButtonContainer = styled.TouchableOpacity`
   position: absolute;
   bottom: 20px;
+  align-self: center;
 `;
 const ImageContainer = styled.View`
   width: ${metrics.screenWidth}px;
@@ -96,20 +100,27 @@ const LoaderView = styled.View`
   justify-content: center;
   align-items: center;
   margin-bottom: 10px;
-`
-const img_url =
-  'https://cdn.zeplin.io/5f06d0806fcd6379955d7809/assets/86083A32-C9DB-4CFA-98E1-00AA837BFAD6.png';
+`;
 
 export default function Loading({ navigation }) {
   const dispatch = useDispatch();
-  const [modalVisible, setModalVisible] = useState(false);
+  const detects = useSelector(state => state.deepfakeReducer.detects);
+  const progress = useSelector(state => state.deepfakeReducer.progress);
+  const video = useSelector(state => state.deepfakeReducer.video);
+  const { endAt } = useSelector(state => state.deepfakeReducer.detectAt);
+  const isFocused = useIsFocused();
 
   const handlePress = () => {
-    navigation.navigate('CheckResult');
+    dispatch(stopIsVideoDone());
+    navigation.navigate('Home');
   };
   return (
     <Container>
-      {modalVisible ? <Mordal /> : false}
+      {endAt && isFocused ? (
+        <Mordal isFake={detects.length && detects.length !== 0} />
+      ) : (
+        false
+      )}
       <Content>
         <LoaderView>
           <ColorDotsLoader
@@ -122,17 +133,23 @@ export default function Loading({ navigation }) {
         </LoaderView>
         <Description>{'파일을 분석중 입니다.'}</Description>
         <ImageContainer>
-          <Image source={{ uri: img_url }} />
-          <ZoomContainer>
+          {detects.length > 0 ? (
+            <Image
+              source={{
+                uri: convertDetectToThumbnail(detects[detects.length - 1]),
+              }}
+            />
+          ) : null}
+          {/*<ZoomContainer>
             <Zoom
               borderColor={AppStyles.color.COLOR_RED}
               borderRadius={0}
               borderWidth={2}
             />
-          </ZoomContainer>
+          </ZoomContainer>*/}
         </ImageContainer>
         <Group>
-          <ProgressBar data={0.5} />
+          <ProgressBar data={progress.frames / progress.totalframes || 0} />
           <InfoBox
             style={{
               paddingTop: 3.3,
@@ -143,7 +160,7 @@ export default function Loading({ navigation }) {
               alignItems: 'center',
             }}>
             <ShieldIcon width={18} height={18} />
-            <Strong>{832}</Strong>
+            <Strong>{detects.length}</Strong>
             <Discover>개의 조작 구간이 발견되었습니다.</Discover>
           </InfoBox>
         </Group>
@@ -152,25 +169,23 @@ export default function Loading({ navigation }) {
           <InfoBox height={100}>
             <MetaView>
               <MetaName>타이틀</MetaName>
-              <MetaData>{`Former President Obama unleashes on Trump,
-GOP - Full speech from Illinois `}</MetaData>
+              <MetaData>{video?.fileName}</MetaData>
             </MetaView>
             <MetaView>
               <MetaName>영상 크기</MetaName>
-              <MetaData>{23.5}MB</MetaData>
+              <MetaData>{byte2mb(video?.fileSize)}MB</MetaData>
             </MetaView>
             <MetaView style={{ marginBottom: 0 }}>
               <MetaName>영상 길이</MetaName>
-              <MetaData>{'02:35:00'}</MetaData>
+              <MetaData>{secondsFormat(video?.duration)}</MetaData>
             </MetaView>
           </InfoBox>
         </Group>
       </Content>
-      <Footer>
-        <ButtonContainer onPress={handlePress}>
-          <PauseButton width={64} height={64} />
-        </ButtonContainer>
-      </Footer>
+      <Footer />
+      <ButtonContainer onPress={handlePress}>
+        <PauseButton width={64} height={64} />
+      </ButtonContainer>
     </Container>
   );
 }

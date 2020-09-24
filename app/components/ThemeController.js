@@ -7,7 +7,7 @@ import { Switch } from 'react-native-paper';
 import * as themeActions from 'app/actions/themeActions';
 
 export default function ThemeController() {
-  const isDark = useSelector(state => state.themeReducer.isDark);
+  const isDark = false;
 
   const dispatch = useDispatch();
   const onToggleTheme = () => dispatch(themeActions.setIsDarkTheme(!isDark));

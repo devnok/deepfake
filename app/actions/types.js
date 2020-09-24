@@ -1,17 +1,18 @@
-//loaders
-export const LOGIN_ENABLE_LOADER = 'LOGIN_ENABLE_LOADER';
-export const LOGIN_DISABLE_LOADER = 'LOGIN_DISABLE_LOADER';
+import { makeAsyncActions } from './utils';
 
-//theming
-export const TOGGLE_THEME = 'TOGGLE_THEME';
+export const START_LOADING = 'START_LOADING';
+export const FINISH_LOADING = 'FINISH_LOADING';
 
-// login
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_RESPONSE = 'LOGIN_RESPONSE';
-export const LOGIN_FAILED = 'LOGIN_FAILED';
-export const LOG_OUT = 'LOG_OUT';
-// check
-export const CHECK_REQUEST = 'CHECK_REQUEST';
-export const CHECK_STATE_CHANGED = 'CHECK_STATE_CHANGED';
-export const CHECK_FAILED = 'CHECK_FAILED';
-export const CHECK_SUCCESS = 'CHECK_SUCCESS';
+export const deepfakeTypes = {
+  UPLOAD_VIDEO: makeAsyncActions('deepfake/UPLOAD_VIDEO'),
+  UPLOAD_IMAGE: makeAsyncActions('deepfake/UPLOAD_IMAGE'),
+  IS_VIDEO_DONE: makeAsyncActions('deepfake/IS_VIDEO_DONE'),
+  IS_IMAGE_DONE: makeAsyncActions('deepfake/IS_IMAGE_DONE'),
+  FETCH_VIDEO: makeAsyncActions('deepfake/FETCH_VIDEO'),
+  FETCH_IMAGE: makeAsyncActions('deepfake/FETCH_IMAGE'),
+  FETCH_DETECTS: makeAsyncActions('deepfake/FETCH_DETECTS'),
+  SET_VIDEO: 'deepfake/SET_VIDEO',
+  SET_VIDEO_DONE: 'deepfake/SET_VIDEO_DONE',
+  SET_IMAGE_DONE: 'deepfake/SET_IMAGE_DONE',
+  STOP_IS_VIDEO_DONE: 'deepfake/STOP_IS_VIDEO_DONE',
+};

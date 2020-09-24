@@ -18,8 +18,8 @@ const Text = styled.Text`
   font-family: ${AppStyles.fonts.FONT_EB};
 `;
 
-const Button = ({ text, bgColor, color }) => (
-  <Container bgColor={bgColor}>
+const Button = ({ text, bgColor, color, onPress }) => (
+  <Container bgColor={bgColor} onPress={onPress}>
     <Text color={color}>{text}</Text>
   </Container>
 );
