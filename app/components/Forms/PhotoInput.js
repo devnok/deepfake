@@ -29,7 +29,6 @@ const options = {
   title: '비디오 또는 이미지 파일을 선택해주세요.',
   mediaType: 'mixed',
   chooseFromLibraryButtonTitle: '갤러리에서 가져오기',
-  takePhotoButtonTitle: '사진 촬영',
   cancelButtonTitle: '취소',
   storageOptions: {
     skipBackup: true,
@@ -38,7 +37,7 @@ const options = {
 };
 const PhotoInput = ({ setVideo }) => {
   const handlePress = () => {
-    ImagePicker.showImagePicker(options, res => {
+    ImagePicker.launchImageLibrary(options, res => {
       if (res.didCancel) {
         console.log('User cancelled image picker');
       } else if (res.error) {
@@ -46,6 +45,7 @@ const PhotoInput = ({ setVideo }) => {
       } else if (res.customButton) {
         console.log('User tapped custom button: ', res.customButton);
       } else {
+        console.log('video result: ', {...res, data: null});
         setVideo(res);
       }
     });

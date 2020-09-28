@@ -5,7 +5,7 @@ import { Portal } from 'react-native-paper';
 import SHILED_FAILED from 'app/assets/shield_x.svg';
 import Button from '../../components/Forms/Button';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setVideo } from 'app/actions/DeepfakeActions';
 
 const Overlay = styled.View`
@@ -45,6 +45,8 @@ const Description = styled.Text`
 const Mordal = ({ isFake = false }) => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const video = useSelector(state => state.deepfakeReducer.video);
+
   const navToHome = () => {
     navigation.reset({
       index: 0,
@@ -55,7 +57,7 @@ const Mordal = ({ isFake = false }) => {
   const navToResult = () => {
     navigation.reset({
       index: 1,
-      routes: [{name: 'Home'}, {name: 'CheckResult'}],
+      routes: [{ name: 'Home' }, { name: 'CheckResult' }],
     });
   };
   const bgColor = isFake
@@ -72,9 +74,7 @@ const Mordal = ({ isFake = false }) => {
           </Description>
           <SHILED_FAILED width={133} height={133} />
           <Description>
-            {isFake
-              ? 'Outstanding Lead People in a DeepFake : Barack Obama'
-              : 'Not Found'}
+            {isFake ? video.fileName || '' : 'Not Found'}
           </Description>
           <Button
             onPress={isFake ? navToResult : navToHome}

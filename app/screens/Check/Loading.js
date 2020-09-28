@@ -169,15 +169,15 @@ export default function Loading({ navigation }) {
           <InfoBox height={100}>
             <MetaView>
               <MetaName>타이틀</MetaName>
-              <MetaData>{video?.fileName}</MetaData>
+              <MetaData>{video.fileName || ''}</MetaData>
             </MetaView>
             <MetaView>
               <MetaName>영상 크기</MetaName>
-              <MetaData>{byte2mb(video?.fileSize)}MB</MetaData>
+              <MetaData>{byte2mb(video.fileSize || 0)}MB</MetaData>
             </MetaView>
             <MetaView style={{ marginBottom: 0 }}>
               <MetaName>영상 길이</MetaName>
-              <MetaData>{secondsFormat(video?.duration)}</MetaData>
+              <MetaData>{secondsFormat(video.duration || 0)}</MetaData>
             </MetaView>
           </InfoBox>
         </Group>

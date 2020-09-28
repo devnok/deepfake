@@ -16,8 +16,8 @@ const Bar = styled.View`
 `;
 const DoneBar = styled.View`
   position: absolute;
-  left: ${props => props.start}px;
-  width: ${props => props.width}px;
+  left: ${props => props.start || 0}px;
+  width: ${props => props.width || 0}px;
   height: 27px;
   border-bottom-left-radius: 13.5px;
   border-top-right-radius: 13.5px;

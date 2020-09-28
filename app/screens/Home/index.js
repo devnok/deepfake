@@ -108,14 +108,14 @@ export default function Home({ navigation }) {
             placeholder={'눌러서 파일을 추가해 주세요.'}
           />
         </Group>
-        <Group>
+        {/*<Group>
           <Label text={'URL 입력'} />
           <Input
             onChangeText={setUrl}
             value={url}
             placeholder={'영상 or 이미지 URL을 입력해 주세요.'}
           />
-        </Group>
+        </Group>*/}
         <Group center>
           <Button text={'찾기'} onPress={findSource} />
         </Group>

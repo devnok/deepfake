@@ -213,7 +213,7 @@ const Result = () => {
               </InfoTitleView>
               <Clock width={36} height={36} />
               <InfoData>
-                {((detectAt.endAt - detectAt.startAt) / 1000).toFixed(0)}초
+                {((detectAt.endAt - detectAt.startAt || 0) / 1000).toFixed(0)}초
               </InfoData>
             </InfoView>
             <InfoView>
@@ -237,11 +237,11 @@ const Result = () => {
             </ResultView>
             <PartsBar
               data={detects.map(d => ({
-                start: d.startSec / video.duration,
-                end: d.endSec / video.duration,
+                start: d.startSec / video.duration || 0,
+                end: d.endSec / video.duration || 0,
               }))}
             />
-            <Length>{secondsFormat(video.duration)}</Length>
+            <Length>{secondsFormat(video.duration || 0)}</Length>
           </InfoBox>
         </Group>
         <Group center>
@@ -259,11 +259,12 @@ const Result = () => {
               </PartBox>
               <PartDesc>
                 <Section>
-                  {secondsFormat(d.startSec)} ~ {secondsFormat(d.endSec)}
+                  {secondsFormat(d.startSec || 0)} ~{' '}
+                  {secondsFormat(d.endSec || 0)}
                 </Section>
                 <Row>
                   <Per>페이크일 확률</Per>
-                  <Percentage>{d.avgFakeProbability * 100}%</Percentage>
+                  <Percentage>{d.avgFakeProbability || 0 * 100}%</Percentage>
                 </Row>
               </PartDesc>
             </InfoBox>
@@ -274,15 +275,15 @@ const Result = () => {
           <InfoBox>
             <MetaView>
               <MetaName>타이틀</MetaName>
-              <MetaData>{video?.fileName}</MetaData>
+              <MetaData>{video.fileName || ''}</MetaData>
             </MetaView>
             <MetaView>
               <MetaName>영상 크기</MetaName>
-              <MetaData>{byte2mb(video?.fileSize)}MB</MetaData>
+              <MetaData>{byte2mb(video.fileSize || 0)}MB</MetaData>
             </MetaView>
             <MetaView style={{ marginBottom: 0 }}>
               <MetaName>영상 길이</MetaName>
-              <MetaData>{secondsFormat(video?.duration)}</MetaData>
+              <MetaData>{secondsFormat(video.duration || 0)}</MetaData>
             </MetaView>
           </InfoBox>
         </Group>
