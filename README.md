@@ -63,6 +63,7 @@ public void launchImageLibrary(final ReadableMap options, final Callback callbac
       String[] mimetypes = {"image/*", "video/*"};
       libraryIntent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes);
     }
+    }
   }
   ...
 }

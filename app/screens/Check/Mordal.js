@@ -63,6 +63,7 @@ const Mordal = ({ isFake = false }) => {
   const bgColor = isFake
     ? AppStyles.color.COLOR_RED
     : AppStyles.color.COLOR_PRIMARY;
+  if(!video) return null;
   return (
     <Portal>
       <Overlay>

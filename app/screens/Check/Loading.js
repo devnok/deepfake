@@ -114,6 +114,7 @@ export default function Loading({ navigation }) {
     dispatch(stopIsVideoDone());
     navigation.navigate('Home');
   };
+  if(!video) return null;
   return (
     <Container>
       {endAt && isFocused ? (

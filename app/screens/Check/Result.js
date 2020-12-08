@@ -264,7 +264,7 @@ const Result = () => {
                 </Section>
                 <Row>
                   <Per>페이크일 확률</Per>
-                  <Percentage>{d.avgFakeProbability || 0 * 100}%</Percentage>
+                  <Percentage>{(d.avgFakeProbability || 0) * 100}%</Percentage>
                 </Row>
               </PartDesc>
             </InfoBox>

@@ -7,19 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9bf4ce36-1d26-4dff-8278-f36790ad7109" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_csscolorkeywords_colors.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_csscolorkeywords_colors.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_cssselect_lib_procedure.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_cssselect_lib_procedure.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_domserializer_foreignnames.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_domserializer_foreignnames.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_decode.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_decode.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_entities.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_entities.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_legacy.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_legacy.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_xml.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_entities_lib_maps_xml.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_materialcommunityicons.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/raw/node_modules_reactnativevectoricons_glyphmaps_materialcommunityicons.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/components/Forms/PhotoInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/components/Forms/PhotoInput.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../app/components/PartsBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/components/PartsBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/index.android.bundle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/screens/Check/Loading.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/screens/Check/Loading.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/screens/Check/Mordal.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/screens/Check/Mordal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../app/screens/Check/Result.js" beforeDir="false" afterPath="$PROJECT_DIR$/../app/screens/Check/Result.js" afterDir="false" />
@@ -155,30 +145,30 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="418" y="200" key="#app" timestamp="1601260888118">
+    <state x="418" y="200" key="#app" timestamp="1606450498945">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="418" y="200" key="#app/0.0.2752.1112@0.0.2752.1112" timestamp="1601260888118" />
+    <state x="418" y="200" key="#app/0.0.2752.1112@0.0.2752.1112" timestamp="1606450498945" />
     <state x="1845" y="311" key="FileChooserDialogImpl" timestamp="1601268064025">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
     <state x="1845" y="311" key="FileChooserDialogImpl/0.0.2752.1112@0.0.2752.1112" timestamp="1601268064025" />
-    <state width="1329" height="303" key="GridCell.Tab.0.bottom" timestamp="1600941277916">
+    <state width="1330" height="263" key="GridCell.Tab.0.bottom" timestamp="1601273825017">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1329" height="303" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1600941277916" />
-    <state width="1329" height="303" key="GridCell.Tab.0.center" timestamp="1600941277915">
+    <state width="1330" height="263" key="GridCell.Tab.0.bottom/0.0.2752.1112@0.0.2752.1112" timestamp="1601273825017" />
+    <state width="1330" height="263" key="GridCell.Tab.0.center" timestamp="1601273825017">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1329" height="303" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1600941277915" />
-    <state width="1329" height="303" key="GridCell.Tab.0.left" timestamp="1600941277915">
+    <state width="1330" height="263" key="GridCell.Tab.0.center/0.0.2752.1112@0.0.2752.1112" timestamp="1601273825017" />
+    <state width="1330" height="263" key="GridCell.Tab.0.left" timestamp="1601273825017">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1329" height="303" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1600941277915" />
-    <state width="1329" height="303" key="GridCell.Tab.0.right" timestamp="1600941277916">
+    <state width="1330" height="263" key="GridCell.Tab.0.left/0.0.2752.1112@0.0.2752.1112" timestamp="1601273825017" />
+    <state width="1330" height="263" key="GridCell.Tab.0.right" timestamp="1601273825017">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state width="1329" height="303" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1600941277916" />
+    <state width="1330" height="263" key="GridCell.Tab.0.right/0.0.2752.1112@0.0.2752.1112" timestamp="1601273825017" />
     <state x="198" y="201" key="SettingsEditor" timestamp="1600941268149">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
@@ -187,17 +177,17 @@
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
     <state x="-75" y="186" width="1189" height="918" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1600907377228" />
-    <state x="1754" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1601251838231">
+    <state x="1754" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1606450500193">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="1754" y="380" key="com.intellij.ide.util.TipDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1601251838231" />
+    <state x="1754" y="380" key="com.intellij.ide.util.TipDialog/0.0.2752.1112@0.0.2752.1112" timestamp="1606450500193" />
     <state x="1721" y="262" key="run.anything.popup" timestamp="1598227354337">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
     <state x="1721" y="262" key="run.anything.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1598227354337" />
-    <state x="351" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1600941128877">
+    <state x="351" y="248" width="672" height="678" key="search.everywhere.popup" timestamp="1601280207416">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="351" y="248" width="672" height="678" key="search.everywhere.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1600941128877" />
+    <state x="351" y="248" width="672" height="678" key="search.everywhere.popup/0.0.2752.1112@0.0.2752.1112" timestamp="1601280207416" />
   </component>
 </project>
