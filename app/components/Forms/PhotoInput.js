@@ -8,12 +8,9 @@ import ImagePicker from 'react-native-image-picker';
 const Container = styled.View`
   width: 100%;
   height: 200px;
-  box-shadow: ${AppStyles.shadow.SHADOW_MEDIUM};
-  elevation: 8;
   padding: 16px;
   padding-top: 18px;
-  background-color: ${AppStyles.color.COLOR_WHITE};
-  border-radius: 18px;
+  background-color: ${AppStyles.color.COLOR_PLACEHOLDER_REFACTOR};
 `;
 const Touchable = styled.TouchableOpacity`
   flex: 1;
@@ -27,7 +24,7 @@ const Text = styled.Text`
 
 const options = {
   title: '비디오 또는 이미지 파일을 선택해주세요.',
-  mediaType: 'mixed',
+  mediaType: 'photo',
   chooseFromLibraryButtonTitle: '갤러리에서 가져오기',
   cancelButtonTitle: '취소',
   storageOptions: {
@@ -45,7 +42,7 @@ const PhotoInput = ({ setVideo }) => {
       } else if (res.customButton) {
         console.log('User tapped custom button: ', res.customButton);
       } else {
-        console.log('video result: ', {...res, data: null});
+        console.log('video result: ', { ...res, data: null });
         setVideo(res);
       }
     });
